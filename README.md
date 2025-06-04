@@ -1,4 +1,4 @@
-# Surgery-assisted cooperative robot project by Using Doosan Manipulator
+# Surgery-assisted cooperative robot project by Using Doosan Manipulator M0609
 
 ** 위 폴더 중 ( ) 폴더가 최종 프로젝트 소스코드입니다. **
 
@@ -16,7 +16,7 @@ d. 의사가 사용하고 놓은 의료 기기를 realsense camera가 인식하�
 e. **봉합:** 의료기기에 따라 수술 부위 인식 후 (Hemostat) 절개된 부위에서 **봉합**을 실시한다.
 
 
-  3) detect_wound node
+  2) detect_wound node
 a. **수술 절개 부위 확대**: 수술이 진행되고 있는 위치로 매니퓰레이터가 움직인 후 STT를 활용하여 키워드를 통해 ('ex) 카메라') 수술 부위(wound)의 객체를 인식한다.
 인식이 되었다면 해당 부위로 조금 더 다가가 모니터(rqt)상으로 수술하고 있는 절개 부위를 확인할 수 있다. 이후 절개 부위 확인하는 동안 **순응 제어**를 통해
 외력 감지 시 수술이 완료되었다고 인식하고 초기좌표로 위치한다.
@@ -24,15 +24,18 @@ b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통�
 
 
 ## 2. 활용 장비 및 개발환경
-- 두산 매니퓰레이터 M0609
-- ROS2 humble(ubuntu 22.04)
-- 레고 블록
+- Doosan Manipulator M0609
+- ROS2 humble ubuntu 22.04
 - OnRobot2 Gripper
+- STT (Using Whisper API)
+- Surgical Tools: Scalpel, Mayo_metz, Forcep, Hemostat
+- Realsense camera
+- YOLOv11n
 
 
 
 ## 3. 프로젝트 수행 경과
-![image](https://github.com/user-attachments/assets/72acfe90-bd1c-4ed1-a3f0-fef858b7fb4a)
+
 그리퍼 제조사 onrobot 내 weblogic을 활용하여 물체를 잡았을 때 그리퍼의 너비에 따라 상품의 크기를 분류하였다.
 
 ![image](https://github.com/user-attachments/assets/7764861f-1d61-4cb6-a121-78ae0638296f)
