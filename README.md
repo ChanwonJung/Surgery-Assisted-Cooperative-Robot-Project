@@ -7,6 +7,7 @@
 
 - 다음 사진과 같이 최근 소수과나 의료진 파업 등 의료 공백이 지속적으로 발생하고 있다.
 - 이러한 사태를 조금이나마 해결하는데 있어 도움이 되고자 기존 남아있는 의료인들의 부담을 줄여주기 위한 수술 보조 협동 로봇 프로젝트이다.
+
 - 기능
   1) robot_control node
 a. **마취:** 수술에 시작하기 앞서 환자의 입 쪽으로 수면 마취 마스크를 가져다 준다.
@@ -31,10 +32,48 @@ b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통�
 - Surgical Tools: Scalpel, Mayo_metz, Forcep, Hemostat
 - Realsense camera
 - YOLOv11n
+![IMG_1181](https://github.com/user-attachments/assets/27a37817-7d40-4802-ada5-695c889642f5)
 
 
 
 ## 3. 프로젝트 수행 경과
+- Surgical Tools dataset
+<img width="490" alt="image" src="https://github.com/user-attachments/assets/25375e33-d360-478c-bd98-fa6b3529f29c" />
+https://universe.roboflow.com/northeastern-university-ftufl/sgtd
+
+1) 사용한 클래스
+a. Mayo_metz: 피부 및 조직 절개용 가위
+b. Forceps: 의료용 핀셋
+c. Scalpel: 메스, 소형 칼날
+d. Hemostat: 동맥 집게, 지혈기
+
+2) 수술 도구 인식에 활용
+   
+![image](https://github.com/user-attachments/assets/b49ba1c8-c90a-4586-92c9-239b3509453f)
+모델은 yolov11n을 활용하였고 epoch=100, img_size=512, batch=20 (이하 auto)를 활용하여 위 사진과 같이 높은 성능을 띄는 객체 인식 확인이 가능하였다.
+
+![image](https://github.com/user-attachments/assets/45044496-10bc-495b-9516-b2bae43d4192)
+학습이 진행됨에 따라서 전체적인 loss 값이 감소하고 precision, recall 값이 90% 이상 넘기는 것을 확인할 수 있었다.
+
+- Hands dataset
+![image](https://github.com/user-attachments/assets/b0b3b55f-2412-42be-a2d7-b4491cf8a5b2)
+https://universe.roboflow.com/hyfyolo/new-hand 
+
+1) 사용한 클래스: Hands
+   
+2) 그리퍼가 의료기기를 인식한 후 의료기기를 집어 손으로 가져다 줄 때 손 인식에 활용
+
+
+- Surgical Wounds dataset
+![image](https://github.com/user-attachments/assets/59f4c4b4-3c2b-419e-9fbf-9a1801e467da)
+https://universe.roboflow.com/myworkspace-zgags/my-first-project-d3ifu/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true
+
+1) 사용한 클래스
+a. Stitched(실밥으로 꿰멘 자국)
+b. Wound(흉터 절개)
+
+2) 절개 부위 인식 및 봉합 기능에 활용
+
 
 그리퍼 제조사 onrobot 내 weblogic을 활용하여 물체를 잡았을 때 그리퍼의 너비에 따라 상품의 크기를 분류하였다.
 
