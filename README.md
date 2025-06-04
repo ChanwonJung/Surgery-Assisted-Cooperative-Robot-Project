@@ -9,7 +9,7 @@
 - 이러한 사태를 조금이나마 해결하는데 있어 도움이 되고자 기존 남아있는 의료인들의 부담을 줄여주기 위한 수술 보조 협동 로봇 프로젝트이다.
 
 - 기능
-1) robot_control node
+**1) robot_control node**
 
 a. **마취:** 수술에 시작하기 앞서 환자의 입 쪽으로 수면 마취 마스크를 가져다 준다.
 
@@ -23,7 +23,7 @@ e. **봉합:** 의료기기에 따라 수술 부위 인식 후 (Hemostat) 절개
 
 
 
-2) detect_wound node
+**2) detect_wound node**
    
 a. **수술 절개 부위 확대**: 수술이 진행되고 있는 위치로 매니퓰레이터가 움직인 후 STT를 활용하여 키워드를 통해 ('ex) 카메라') 수술 부위(wound)의 객체를 인식한다.
 
@@ -32,6 +32,7 @@ a. **수술 절개 부위 확대**: 수술이 진행되고 있는 위치로 매�
 
 
 b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통해 ('ex) 석션, Yankeur) 인식된 수술 부위(wound) 주변 혈액을 흡입한다.
+
 
 
 
@@ -47,8 +48,9 @@ b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통�
 
 
 
+
 ## 3. 프로젝트 수행 경과
-- Surgical Tools dataset
+**- Surgical Tools dataset**
 <img width="490" alt="image" src="https://github.com/user-attachments/assets/25375e33-d360-478c-bd98-fa6b3529f29c" />
 https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 
@@ -66,22 +68,27 @@ d. Hemostat: 동맥 집게, 지혈기
 ![image](https://github.com/user-attachments/assets/45044496-10bc-495b-9516-b2bae43d4192)
 학습이 진행됨에 따라서 전체적인 loss 값이 감소하고 precision, recall 값이 90% 이상 넘기는 것을 확인할 수 있었다.
 
-- Hands dataset
+**- Hands dataset**
 ![image](https://github.com/user-attachments/assets/b0b3b55f-2412-42be-a2d7-b4491cf8a5b2)
 https://universe.roboflow.com/hyfyolo/new-hand 
+
 
 1) 사용한 클래스: Hands
    
 2) 그리퍼가 의료기기를 인식한 후 의료기기를 집어 손으로 가져다 줄 때 손 인식에 활용
 
 
-- Surgical Wounds dataset
+**- Surgical Wounds dataset**
 ![image](https://github.com/user-attachments/assets/59f4c4b4-3c2b-419e-9fbf-9a1801e467da)
 https://universe.roboflow.com/myworkspace-zgags/my-first-project-d3ifu/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true
 
+
 1) 사용한 클래스
+
 a. Stitched(실밥으로 꿰멘 자국)
+
 b. Wound(흉터 절개)
+
 
 2) 절개 부위 인식 및 봉합 기능에 활용
 
