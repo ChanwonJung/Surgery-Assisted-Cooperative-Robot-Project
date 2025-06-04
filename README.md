@@ -125,19 +125,14 @@ Hello, rokey를 통해 wakeword.py 실행 -> STT를 활용하여 수술 절개 �
 
 
 
-
-
-
-
-
 ## 4. 프로젝트 중 경험했던 오류들
-a. weblogic이 아닌 onrobot 그리퍼가 해당 물체를 집었을 때 그리퍼의 너비를 실시간으로 통신하는 PyModBus Protocol을 활용하려 하였지만 I/O controller 특성 상 그러지 못하였다.
-https://github.com/ABC-iRobotics/onrobot-ros2/tree/main/onrobot_rg_control/onrobot_rg_control
+a. 빛 반사에 의한 객체 인식률이 하락되었다. 환경에 민감하다.
 
-b. set_desired_force() 외력 명령에 movel()을 같이 사용하여 하드웨어 자체의 이벤트가 거절되었다.
+b. STT로써 Whisper API 성능 개선을 위해 다양한 경우의 수로 프롬포트를 설정하였지만 그럼에도 불구하고 음성 인식이 안되는 경우가 발생하였다.
+
+c. 데이터 라벨의 클래스가 총 15개인데 상황 상 어쩔 수 없이 클래스를 4개밖에 활용하지 못하였다. (Mayo_metz, Forceps, Hemostat, Scalpel)
 
 
 
 ## 5. 시연
 
-https://drive.google.com/file/d/1xDryZHY2w0bPtmrQmrJiEwY50bOkdlcB/view?usp=drive_link
