@@ -56,6 +56,7 @@
 ## 3. 프로젝트 수행 경과
 ### **- Surgical Tools dataset**
 <img width="490" alt="image" src="https://github.com/user-attachments/assets/25375e33-d360-478c-bd98-fa6b3529f29c" />
+
 https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 
 1) 사용한 클래스
