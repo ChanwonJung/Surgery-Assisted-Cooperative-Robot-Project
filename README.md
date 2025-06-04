@@ -72,9 +72,11 @@ https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 2) 수술 도구 인식에 활용
    
 ![image](https://github.com/user-attachments/assets/b49ba1c8-c90a-4586-92c9-239b3509453f)
+
 모델은 yolov11n을 활용하였고 epoch=100, img_size=512, batch=20 (이하 auto)를 활용하여 위 사진과 같이 높은 성능을 띄는 객체 인식 확인이 가능하였다.
 
 ![image](https://github.com/user-attachments/assets/45044496-10bc-495b-9516-b2bae43d4192)
+
 학습이 진행됨에 따라서 전체적인 loss 값이 감소하고 precision, recall 값이 90% 이상 넘기는 것을 확인할 수 있었다.
 
 ### **- Hands dataset**
