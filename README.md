@@ -44,7 +44,9 @@
 - Surgical Tools: Scalpel, Mayo_metz, Forcep, Hemostat
 - Realsense camera
 - YOLOv11n
-![IMG_1181](https://github.com/user-attachments/assets/27a37817-7d40-4802-ada5-695c889642f5)
+
+<img width="463" alt="image" src="https://github.com/user-attachments/assets/46f17870-5819-4ee0-8290-3efa13d07690" />
+
 
 
 
