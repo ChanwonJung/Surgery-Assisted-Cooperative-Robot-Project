@@ -9,29 +9,29 @@
 - 이러한 사태를 조금이나마 해결하는데 있어 도움이 되고자 기존 남아있는 의료인들의 부담을 줄여주기 위한 수술 보조 협동 로봇 프로젝트이다.
 
 - 기능
-**1) robot_control node**
+### **1) robot_control node**
 
-a. **마취:** 수술에 시작하기 앞서 환자의 입 쪽으로 수면 마취 마스크를 가져다 준다.
+   a. **마취:** 수술에 시작하기 앞서 환자의 입 쪽으로 수면 마취 마스크를 가져다 준다.
 
-b. **의료기기 객체 인식:** **STT**를 활용하여 데이터 라벨 클래스 내 **의료 기기 키워드**를 인식하고 realsense camera가 해당 키워드의 객체를 인식하면 집는다.
+   b. **의료기기 객체 인식:** **STT**를 활용하여 데이터 라벨 클래스 내 **의료 기기 키워드**를 인식하고 realsense camera가 해당 키워드의 객체를 인식하면 집는다.
 
-c. **손 객체 인식:** 객체를 집고 있는 그리퍼 위에 있는 realsense camera가 의사의 **hand 객체 인식** 시 hand가 위치해있는 depth로 의료기기를 가져다 준다.
+   c. **손 객체 인식:** 객체를 집고 있는 그리퍼 위에 있는 realsense camera가 의사의 **hand 객체 인식** 시 hand가 위치해있는 depth로 의료기기를 가져다 준다.
 
-d. 의사가 사용하고 놓은 의료 기기를 realsense camera가 인식하여 데이터 라벨 클래스 내 의료기기가 인식되면 기존 초기에 놓여져 있는 곳으로 다시 위치한다.
+   d. 의사가 사용하고 놓은 의료 기기를 realsense camera가 인식하여 데이터 라벨 클래스 내 의료기기가 인식되면 기존 초기에 놓여져 있는 곳으로 다시 위치한다.
 
-e. **봉합:** 의료기기에 따라 수술 부위 인식 후 (Hemostat) 절개된 부위에서 **봉합**을 실시한다.
+   e. **봉합:** 의료기기에 따라 수술 부위 인식 후 (Hemostat) 절개된 부위에서 **봉합**을 실시한다.
 
 
 
-**2) detect_wound node**
+### **2) detect_wound node**
    
-a. **수술 절개 부위 확대**: 수술이 진행되고 있는 위치로 매니퓰레이터가 움직인 후 STT를 활용하여 키워드를 통해 ('ex) 카메라') 수술 부위(wound)의 객체를 인식한다.
+   a. **수술 절개 부위 확대**: 수술이 진행되고 있는 위치로 매니퓰레이터가 움직인 후 STT를 활용하여 키워드를 통해 ('ex) 카메라') 수술 부위(wound)의 객체를 인식한다.
 
-인식이 되었다면 해당 부위로 조금 더 다가가 모니터(rqt)상으로 수술하고 있는 절개 부위를 확인할 수 있다. 
-이후 절개 부위 확인하는 동안 **순응 제어**를 통해 외력 감지 시 수술이 완료되었다고 인식하고 초기좌표로 위치한다.
+   인식이 되었다면 해당 부위로 조금 더 다가가 모니터(rqt)상으로 수술하고 있는 절개 부위를 확인할 수 있다. 
+   이후 절개 부위 확인하는 동안 **순응 제어**를 통해 외력 감지 시 수술이 완료되었다고 인식하고 초기좌표로 위치한다.
 
 
-b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통해 ('ex) 석션, Yankeur) 인식된 수술 부위(wound) 주변 혈액을 흡입한다.
+   b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통해 ('ex) 석션, Yankeur) 인식된 수술 부위(wound) 주변 혈액을 흡입한다.
 
 
 
@@ -50,15 +50,15 @@ b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통�
 
 
 ## 3. 프로젝트 수행 경과
-**- Surgical Tools dataset**
+### **- Surgical Tools dataset**
 <img width="490" alt="image" src="https://github.com/user-attachments/assets/25375e33-d360-478c-bd98-fa6b3529f29c" />
 https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 
 1) 사용한 클래스
-a. Mayo_metz: 피부 및 조직 절개용 가위
-b. Forceps: 의료용 핀셋
-c. Scalpel: 메스, 소형 칼날
-d. Hemostat: 동맥 집게, 지혈기
+   a. Mayo_metz: 피부 및 조직 절개용 가위
+   b. Forceps: 의료용 핀셋
+   c. Scalpel: 메스, 소형 칼날
+   d. Hemostat: 동맥 집게, 지혈기
 
 2) 수술 도구 인식에 활용
    
@@ -68,7 +68,7 @@ d. Hemostat: 동맥 집게, 지혈기
 ![image](https://github.com/user-attachments/assets/45044496-10bc-495b-9516-b2bae43d4192)
 학습이 진행됨에 따라서 전체적인 loss 값이 감소하고 precision, recall 값이 90% 이상 넘기는 것을 확인할 수 있었다.
 
-**- Hands dataset**
+### **- Hands dataset**
 ![image](https://github.com/user-attachments/assets/b0b3b55f-2412-42be-a2d7-b4491cf8a5b2)
 https://universe.roboflow.com/hyfyolo/new-hand 
 
@@ -78,22 +78,23 @@ https://universe.roboflow.com/hyfyolo/new-hand 
 2) 그리퍼가 의료기기를 인식한 후 의료기기를 집어 손으로 가져다 줄 때 손 인식에 활용
 
 
-**- Surgical Wounds dataset**
+### **- Surgical Wounds dataset**
 ![image](https://github.com/user-attachments/assets/59f4c4b4-3c2b-419e-9fbf-9a1801e467da)
 https://universe.roboflow.com/myworkspace-zgags/my-first-project-d3ifu/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true
 
 
 1) 사용한 클래스
 
-a. Stitched(실밥으로 꿰멘 자국)
-
-b. Wound(흉터 절개)
+   a. Stitched(실밥으로 꿰멘 자국)
+   b. Wound(흉터 절개)
 
 
 2) 절개 부위 인식 및 봉합 기능에 활용
 
+### - 수행 흐름도
+<img width="494" alt="image" src="https://github.com/user-attachments/assets/d55f09fa-5043-4a30-83af-a6839c123c15" />
+<img width="420" alt="image" src="https://github.com/user-attachments/assets/8815abcc-86f5-4730-a8a3-8c9e0ff3b8df" />
 
-그리퍼 제조사 onrobot 내 weblogic을 활용하여 물체를 잡았을 때 그리퍼의 너비에 따라 상품의 크기를 분류하였다.
 
 ![image](https://github.com/user-attachments/assets/7764861f-1d61-4cb6-a121-78ae0638296f)
 
