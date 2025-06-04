@@ -1,4 +1,4 @@
-# 쿠팡 물류 허브 배달 프로젝트
+# Surgery-assisted cooperative robot project by Using Doosan Manipulator
 
 ** 위 폴더 중 ( ) 폴더가 최종 프로젝트 소스코드입니다. **
 
