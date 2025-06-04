@@ -36,6 +36,7 @@
 
 
 
+
 ## 2. 활용 장비 및 개발환경
 - Doosan Manipulator M0609
 - ROS2 humble ubuntu 22.04
@@ -46,6 +47,7 @@
 - YOLOv11n
 
 <img width="463" alt="image" src="https://github.com/user-attachments/assets/46f17870-5819-4ee0-8290-3efa13d07690" />
+
 
 
 
@@ -102,7 +104,9 @@ https://universe.roboflow.com/myworkspace-zgags/my-first-project-d3ifu/browse?qu
 <img width="420" alt="image" src="https://github.com/user-attachments/assets/8815abcc-86f5-4730-a8a3-8c9e0ff3b8df" />
 
 
-![image](https://github.com/user-attachments/assets/7764861f-1d61-4cb6-a121-78ae0638296f)
+![detected wound(1)](https://github.com/user-attachments/assets/a9284924-59c4-4c69-9646-707202e4180c)
+
+![robot control](https://github.com/user-attachments/assets/896c4ee4-02dc-456d-8046-ea6a0bfaeabe)
 
 <알고리즘 순서도>: 공장에서 허브로 블록 입고 -> 허브 안 영역에서 블록 적재 -> 소비자로부터 주문이 들어왔을 때 블록 출고
 
