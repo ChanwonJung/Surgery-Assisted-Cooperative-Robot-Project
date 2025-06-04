@@ -58,9 +58,13 @@ https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 
 1) 사용한 클래스
    a. Mayo_metz: 피부 및 조직 절개용 가위
+
    b. Forceps: 의료용 핀셋
+
    c. Scalpel: 메스, 소형 칼날
+
    d. Hemostat: 동맥 집게, 지혈기
+
 
 2) 수술 도구 인식에 활용
    
