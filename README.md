@@ -133,3 +133,4 @@ c. 데이터 라벨의 클래스가 총 15개인데 상황 상 어쩔 수 없이
 
 ## 5. 시연
 
+https://drive.google.com/file/d/1xDryZHY2w0bPtmrQmrJiEwY50bOkdlcB/view?usp=sharing
