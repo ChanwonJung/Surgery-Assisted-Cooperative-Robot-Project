@@ -1,6 +1,6 @@
 # Surgery-assisted cooperative robot project by Using Doosan Manipulator M0609
 
-** 위 폴더 중 ( ) 폴더가 최종 프로젝트 소스코드입니다. **
+** 위 폴더 중 '최종' 폴더가 최종 프로젝트 소스코드입니다. **
 
 ## 1. 프로젝트 개요
 ![스크린샷 2025-06-04 13-36-51](https://github.com/user-attachments/assets/6532c598-7d46-4b40-acac-6a35c17f8e70)
