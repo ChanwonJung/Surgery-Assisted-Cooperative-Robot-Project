@@ -111,10 +111,6 @@ https://universe.roboflow.com/myworkspace-zgags/my-first-project-d3ifu/browse?qu
 <img width="420" alt="image" src="https://github.com/user-attachments/assets/8815abcc-86f5-4730-a8a3-8c9e0ff3b8df" />
 
 
-![detected wound(1)](https://github.com/user-attachments/assets/a9284924-59c4-4c69-9646-707202e4180c)
-
-![robot control](https://github.com/user-attachments/assets/896c4ee4-02dc-456d-8046-ea6a0bfaeabe)
-
 <robot_control 알고리즘 순서도>
 
 환자 마취 수면 진행 -> Hello, rokey를 통해 wakeword.py 실행- > STT를 활용하여 의료 기기 키워드 인식 -> 해당 의료 기기 인식 후 잡은 후 손 객체 인식 -> 인식이 되면 손에 의료 기기 전달 -> 의료진들이 사용 후 내려 놓은 의료 기기 유무 확인 -> 초기 좌표 복귀
