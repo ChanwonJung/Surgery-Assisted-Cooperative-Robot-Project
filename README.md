@@ -59,6 +59,7 @@
 https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 
 1) 사용한 클래스
+
    a. Mayo_metz: 피부 및 조직 절개용 가위
 
    b. Forceps: 의료용 핀셋
