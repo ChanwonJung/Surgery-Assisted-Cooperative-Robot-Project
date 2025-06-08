@@ -1,43 +1,43 @@
 # Surgery-assisted cooperative robot project by Using Doosan Manipulator M0609
 
-** 위 폴더 중 '최종' 폴더가 최종 프로젝트 소스코드입니다. **
+** Among the above folders, the '최종' folder is the final project source code. **.
 
-## 1. 프로젝트 개요
+
+## 1. Project Overview
 ![스크린샷 2025-06-04 13-36-51](https://github.com/user-attachments/assets/6532c598-7d46-4b40-acac-6a35c17f8e70)
 
-- 다음 사진과 같이 최근 소수과나 의료진 파업 등 의료 공백이 지속적으로 발생하고 있다.
-- 이러한 사태를 조금이나마 해결하는데 있어 도움이 되고자 기존 남아있는 의료인들의 부담을 줄여주기 위한 수술 보조 협동 로봇 프로젝트이다.
+- As shown in the following photo, medical gaps such as strikes by minority departments and medical staff have continued to occur.
+- It is a surgical-assisted cooperative robot project to reduce the burden on existing medical personnel to help solve this situation even a little.
 
-- 기능으로는 아래와 같다.
+- The functions are as follows.
 ### **1) robot_control node**
 
-   a. **마취:** 수술에 시작하기 앞서 환자의 입 쪽으로 수면 마취 마스크를 가져다 준다.
+a. **Anesthesia:** Bring a sleep anesthesia mask to the patient's mouth prior to starting surgery.
 
-   b. **의료기기 객체 인식:** **STT**를 활용하여 데이터 라벨 클래스 내 **의료 기기 키워드**를 인식하고 realsense camera가 해당 키워드의 객체를 인식하면 집는다.
+b. **Medical device object recognition:****** utilizes STT** to recognize **medical device keywords** within the data label class and picks up when the realsense camera recognizes the object of that keyword.
 
-   c. **손 객체 인식:** 객체를 집고 있는 그리퍼 위에 있는 realsense camera가 의사의 **hand 객체 인식** 시 hand가 위치해있는 depth로 의료기기를 가져다 준다.
+c. **Hand object recognition:** The realsense camera on the gripper holding the object brings the medical device to the depth where the hand is located when the doctor recognizes the **hand object.
 
-   d. 의사가 사용하고 놓은 의료 기기를 realsense camera가 인식하여 데이터 라벨 클래스 내 의료기기가 인식되면 기존 초기에 놓여져 있는 곳으로 다시 위치한다.
+d. When the medical device used by the doctor is recognized by the realsense camera and the medical device in the data label class is recognized, it is repositioned to the place where it was initially placed.
 
-   e. **봉합:** 의료기기에 따라 수술 부위 인식 후 (Hemostat) 절개된 부위에서 **봉합**을 실시한다.
+e. **Seal: **Seal at the incised area after recognition of the surgical site (Hemostat) depending on the medical device. **Seal is carried out at the incised area.
 
 
 
 ### **2) detect_wound node**
    
-   a. **수술 절개 부위 확대**: 수술이 진행되고 있는 위치로 매니퓰레이터가 움직인 후 STT를 활용하여 키워드를 통해 ('ex) 카메라') 수술 부위(wound)의 객체를 인식한다.
+a. **Expand the surgical incision**: After the manipulator moves to the position where the surgery is taking place, the object at the surgical site ('ex) camera') is recognized through the keyword ('ex) camera').
 
-   인식이 되었다면 해당 부위로 조금 더 다가가 모니터(rqt)상으로 수술하고 있는 절개 부위를 확인할 수 있다. 
-   이후 절개 부위 확인하는 동안 **순응 제어**를 통해 외력 감지 시 수술이 완료되었다고 인식하고 초기좌표로 위치한다.
-
-
-   b. **석션을 활용한 혈액 흡입**: STT를 활용 하여 키워드를 통해 ('ex) 석션, Yankeur) 인식된 수술 부위(wound) 주변 혈액을 흡입한다.
+If it is recognized, it is possible to get a little closer to the area and check the incision that is being operated on the monitor (rqt).
+Afterwards, while checking the incision site, when external force is detected through **adaptive control**, the surgery is recognized to be completed and positioned as initial coordinates.
 
 
+b. **Inhalation of blood using suction**: Using STT(Using Whisper API), inhale blood around the recognized surgical site ('ex) suction, Yankeeur) through keywords.
 
 
 
-## 2. 활용 장비 및 개발환경
+
+## 2. Utilization equipment and development environment
 - Doosan Manipulator M0609
 - ROS2 humble ubuntu 22.04
 - OnRobot2 Gripper
@@ -53,42 +53,41 @@
 
 
 
-## 3. 프로젝트 수행 경과
+## 3. Project progress
 ### **- Surgical Tools dataset**
 <img width="490" alt="image" src="https://github.com/user-attachments/assets/25375e33-d360-478c-bd98-fa6b3529f29c" />
 
 https://universe.roboflow.com/northeastern-university-ftufl/sgtd
 
-1) 사용한 클래스
+1) Classes label
 
-   a. Mayo_metz: 피부 및 조직 절개용 가위
+a. Mayo_metz: Scissors for skin and tissue incision
 
-   b. Forceps: 의료용 핀셋
+b. Forceps: Medical tweezers
 
-   c. Scalpel: 메스, 소형 칼날
+c. Scalpel: scalpel, small blade
 
-   d. Hemostat: 동맥 집게, 지혈기
+d. Hemostat: arterial clamps, hemostatic devices
 
 
-2) 수술 도구 인식에 활용
+2) Use to recognize surgical instruments
    
 ![image](https://github.com/user-attachments/assets/b49ba1c8-c90a-4586-92c9-239b3509453f)
 
-모델은 yolov11n을 활용하였고 epoch=100, img_size=512, batch=20 (이하 auto)를 활용하여 위 사진과 같이 높은 성능을 띄는 객체 인식 확인이 가능하였다.
+The model used yolov11n and used epoch=100, img_size=512, and batch=20 (auto) to confirm high-performance object recognition as shown in the picture above.
 
 ![image](https://github.com/user-attachments/assets/45044496-10bc-495b-9516-b2bae43d4192)
 
-학습이 진행됨에 따라서 전체적인 loss 값이 감소하고 precision, recall 값이 90% 이상 넘기는 것을 확인할 수 있었다.
+It was confirmed that the overall loss value decreased as learning progressed, and the precision and recall values exceeded 90%.
 
 ### **- Hands dataset**
 ![image](https://github.com/user-attachments/assets/b0b3b55f-2412-42be-a2d7-b4491cf8a5b2)
 
 https://universe.roboflow.com/hyfyolo/new-hand 
 
+1) Classes used: Hands
 
-1) 사용한 클래스: Hands
-   
-2) 그리퍼가 의료기기를 인식한 후 의료기기를 집어 손으로 가져다 줄 때 손 인식에 활용
+2) Use it for hand recognition when gripper picks up and brings the medical device by hand after recognizing it
 
 
 ### **- Surgical Wounds dataset**
@@ -97,40 +96,40 @@ https://universe.roboflow.com/hyfyolo/new-hand 
 https://universe.roboflow.com/myworkspace-zgags/my-first-project-d3ifu/browse?queryText=&pageSize=50&startingIndex=0&browseQuery=true
 
 
-1) 사용한 클래스
+1) Classes label
 
-   a. Stitched(실밥으로 꿰멘 자국)
+a. Stitched
 
-   b. Wound(흉터 절개)
+b. Wound
 
 
-2) 절개 부위 인식 및 봉합 기능에 활용
+2) Use for incision recognition and suture functions
 
-### - 수행 흐름도
+### -  Flowchart of performance
 <img width="494" alt="image" src="https://github.com/user-attachments/assets/d55f09fa-5043-4a30-83af-a6839c123c15" />
 <img width="420" alt="image" src="https://github.com/user-attachments/assets/8815abcc-86f5-4730-a8a3-8c9e0ff3b8df" />
 
 
-<robot_control 알고리즘 순서도>
+<Robot_control algorithm flow chart>
 
-환자 마취 수면 진행 -> Hello, rokey를 통해 wakeword.py 실행- > STT를 활용하여 의료 기기 키워드 인식 -> 해당 의료 기기 인식 후 잡은 후 손 객체 인식 -> 인식이 되면 손에 의료 기기 전달 -> 의료진들이 사용 후 내려 놓은 의료 기기 유무 확인 -> 초기 좌표 복귀
+Patient anesthesia sleep progression -> Run wakeword.py via Hello, route -> Use STT to recognize medical device keywords -> Recognize hand objects after holding them -> Deliver medical device to hand when recognized -> Check the presence or absence of medical device put down by medical staff after use -> Return to initial coordinates
 
-<절개 부위 노드 detect_wound 순서도>
+<Detect_wound flow chart of the section node>
 
-Hello, rokey를 통해 wakeword.py 실행 -> STT를 활용하여 수술 절개 키워드 인식 -> 수술 절개 인식 후 수술 부위 확대 -> 해당 부위의 수술이 완료되면 -> 순응제어를 통해 초기좌표 복귀
-
-
-
-
-## 4. 프로젝트 중 경험했던 오류들
-a. 빛 반사에 의한 객체 인식률이 하락되었다. 환경에 민감하다.
-
-b. STT로써 Whisper API 성능 개선을 위해 다양한 경우의 수로 프롬포트를 설정하였지만 그럼에도 불구하고 음성 인식이 안되는 경우가 발생하였다.
-
-c. 데이터 라벨의 클래스가 총 15개인데 상황 상 어쩔 수 없이 클래스를 4개밖에 활용하지 못하였다. (Mayo_metz, Forceps, Hemostat, Scalpel)
+Hello, run wakeword.py via rokey -> recognize surgical incision keywords using STT -> enlarge surgical site after surgical incision recognition -> return to initial coordinate through compliance control
 
 
 
-## 5. 시연
+
+## 4. Errors experienced during the project
+a. The object recognition rate by light reflection has decreased. It is sensitive to the environment.
+
+b. As STT, promports were set to a number of various cases to improve Whisper API performance, but voice recognition was nevertheless not possible.
+
+c. There are a total of 15 classes of data labels, but due to the situation, only 4 classes were used. (Mayo_metz, Forceps, Hemostat, Scalpel)
+
+
+
+## 5. Demo
 
 https://drive.google.com/file/d/1ya3sM34Hc5CPN4aMMyc6QHAeQYTwBzs0/view?usp=sharing
